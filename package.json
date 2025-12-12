@@ -1,0 +1,35 @@
+{
+  "name": "@pargos-chest/lightning-animation",
+  "version": "1.0.0",
+  "description": "High-performance animated circuit-board background with electric-blue traveling light effects",
+  "type": "module",
+  "main": "lightning-animation.js",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx serve . -l 3000"
+  },
+  "keywords": [
+    "animation",
+    "canvas",
+    "background",
+    "circuit",
+    "lightning",
+    "particles",
+    "electric",
+    "procedural",
+    "performance"
+  ],
+  "author": "Pargo's Chest",
+  "license": "MIT",
+  "devDependencies": {},
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Crypto-Vidal/Pargo-s-Chest-.git"
+  },
+  "files": [
+    "lightning-animation.js",
+    "styles.css",
+    "README.md"
+  ]
+}
