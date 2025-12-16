@@ -95,7 +95,7 @@ export class ExportService {
       exportDate: new Date().toISOString(),
       user,
       categories,
-      videos: videos.map((video) => ({
+      videos: videos.map((video: any) => ({
         id: video.id,
         url: video.url,
         title: video.title,
@@ -110,7 +110,7 @@ export class ExportService {
         isFavorite: video.isFavorite,
         tags: video.tags,
         categoryName: video.category?.name || null,
-        notes: video.notes.map((note) => ({
+        notes: video.notes.map((note: any) => ({
           id: note.id,
           content: note.content,
           timestamp: note.timestamp,

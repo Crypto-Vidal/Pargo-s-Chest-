@@ -3,15 +3,16 @@ import searchService from '../services/search.service';
 import { getPaginationParams } from '../utils/pagination';
 
 export class SearchController {
-  async searchVideos(req: Request, res: Response) {
+  async searchVideos(req: Request, res: Response): Promise<void> {
     const userId = req.headers['x-user-id'] as string;
     const { q } = req.query;
 
     if (!q || typeof q !== 'string') {
-      return res.status(400).json({
+      res.status(400).json({
         status: 'error',
         message: 'Search query is required',
       });
+      return;
     }
 
     const pagination = getPaginationParams(
@@ -27,15 +28,16 @@ export class SearchController {
     });
   }
 
-  async searchNotes(req: Request, res: Response) {
+  async searchNotes(req: Request, res: Response): Promise<void> {
     const userId = req.headers['x-user-id'] as string;
     const { q } = req.query;
 
     if (!q || typeof q !== 'string') {
-      return res.status(400).json({
+      res.status(400).json({
         status: 'error',
         message: 'Search query is required',
       });
+      return;
     }
 
     const pagination = getPaginationParams(
@@ -51,15 +53,16 @@ export class SearchController {
     });
   }
 
-  async searchAll(req: Request, res: Response) {
+  async searchAll(req: Request, res: Response): Promise<void> {
     const userId = req.headers['x-user-id'] as string;
     const { q } = req.query;
 
     if (!q || typeof q !== 'string') {
-      return res.status(400).json({
+      res.status(400).json({
         status: 'error',
         message: 'Search query is required',
       });
+      return;
     }
 
     const pagination = getPaginationParams(
