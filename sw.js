@@ -8,9 +8,14 @@ const STATIC_ASSETS = [
   '/index.html',
   '/styles.css',
   '/app.js',
-  '/manifest.json',
+  '/manifest.json'
+];
+
+// Optional assets (won't fail install if missing)
+const OPTIONAL_ASSETS = [
   '/icons/icon-192.png',
-  '/icons/icon-512.png'
+  '/icons/icon-512.png',
+  '/icons/icon.svg'
 ];
 
 // Install event - cache static assets
@@ -19,9 +24,28 @@ self.addEventListener('install', (event) => {
 
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then((cache) => {
+      .then(async (cache) => {
         console.log('[SW] Caching static assets');
-        return cache.addAll(STATIC_ASSETS);
+
+        // Cache required assets (will fail if any are missing)
+        await cache.addAll(STATIC_ASSETS);
+
+        // Try to cache optional assets (won't fail install if missing)
+        await Promise.allSettled(
+          OPTIONAL_ASSETS.map(async (url) => {
+            try {
+              const response = await fetch(url);
+              if (response.ok) {
+                await cache.put(url, response);
+                console.log('[SW] Cached optional asset:', url);
+              }
+            } catch (error) {
+              console.log('[SW] Optional asset not available:', url);
+            }
+          })
+        );
+
+        console.log('[SW] Caching complete');
       })
       .then(() => {
         console.log('[SW] Skip waiting');
@@ -29,6 +53,7 @@ self.addEventListener('install', (event) => {
       })
       .catch((error) => {
         console.error('[SW] Installation failed:', error);
+        throw error;
       })
   );
 });

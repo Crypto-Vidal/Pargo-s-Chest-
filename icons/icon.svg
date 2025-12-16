@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f39c12;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e67e22;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="512" height="512" rx="80" fill="#1a1a2e"/>
+
+  <!-- Treasure Chest Base -->
+  <rect x="100" y="280" width="312" height="150" rx="10" fill="url(#grad)"/>
+  <rect x="100" y="280" width="312" height="30" fill="#d68910"/>
+
+  <!-- Chest Lock -->
+  <circle cx="256" cy="340" r="25" fill="#2c3e50"/>
+  <rect x="250" y="340" width="12" height="40" rx="3" fill="#2c3e50"/>
+
+  <!-- Chest Lid -->
+  <path d="M 100 280 Q 100 200, 150 180 L 362 180 Q 412 200, 412 280 Z" fill="url(#grad)"/>
+  <path d="M 100 280 Q 100 200, 150 180 L 362 180 Q 412 200, 412 280 Z" fill="rgba(0,0,0,0.2)"/>
+
+  <!-- Decorative bands -->
+  <rect x="100" y="250" width="312" height="8" fill="#d68910"/>
+  <rect x="100" y="370" width="312" height="8" fill="#d68910"/>
+
+  <!-- Sparkles -->
+  <circle cx="150" cy="150" r="6" fill="#f1c40f" opacity="0.8"/>
+  <circle cx="360" cy="160" r="8" fill="#f1c40f" opacity="0.9"/>
+  <circle cx="200" cy="130" r="5" fill="#fff" opacity="0.7"/>
+  <circle cx="320" cy="140" r="7" fill="#fff" opacity="0.6"/>
+</svg>

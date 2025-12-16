@@ -1,0 +1,19 @@
+{
+  "name": "pargos-chest",
+  "version": "1.0.0",
+  "description": "Progressive Web App clipboard manager - Your personal treasure chest",
+  "main": "index.html",
+  "scripts": {
+    "dev": "python3 -m http.server 8000",
+    "start": "python3 -m http.server 8000"
+  },
+  "keywords": [
+    "pwa",
+    "clipboard",
+    "mobile",
+    "offline",
+    "progressive-web-app"
+  ],
+  "author": "",
+  "license": "MIT"
+}
