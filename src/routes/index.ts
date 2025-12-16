@@ -5,22 +5,19 @@ import categoryRoutes from './category.routes';
 import userRoutes from './user.routes';
 import searchRoutes from './search.routes';
 import exportRoutes from './export.routes';
+import healthRoutes from './health.routes';
 
 const router = Router();
 
+// Health check routes (no auth required)
+router.use('/health', healthRoutes);
+
+// API routes
 router.use('/videos', videoRoutes);
 router.use('/notes', noteRoutes);
 router.use('/categories', categoryRoutes);
 router.use('/users', userRoutes);
 router.use('/search', searchRoutes);
 router.use('/export', exportRoutes);
-
-router.get('/health', (req, res) => {
-  res.json({
-    status: 'success',
-    message: "Pargo's Chest API is running",
-    timestamp: new Date().toISOString(),
-  });
-});
 
 export default router;
