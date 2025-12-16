@@ -1,0 +1,52 @@
+// Optimized database schema with proper indexing
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["fullTextSearch", "fullTextIndex"]
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Treasure {
+  id          String   @id @default(cuid())
+  name        String
+  description String
+  category    String
+  rarity      String
+  value       Int
+  imageUrl    String?
+  discoveredAt DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tags        Tag[]
+
+  // Optimized indexes for common queries
+  @@index([userId])
+  @@index([category])
+  @@index([rarity])
+  @@index([discoveredAt(sort: Desc)])
+  @@index([userId, category])
+  @@index([userId, rarity])
+  @@index([name]) // For search performance
+}
+
+model User {
+  id        String     @id @default(cuid())
+  email     String     @unique
+  name      String?
+  createdAt DateTime   @default(now())
+  treasures Treasure[]
+
+  @@index([email])
+}
+
+model Tag {
+  id         String     @id @default(cuid())
+  name       String     @unique
+  treasures  Treasure[]
+
+  @@index([name])
+}
